@@ -24,15 +24,10 @@ const register: React.FC<registerProps> = ({}) => {
       >
         {({ isSubmitting }) => (
           <Form>
-            <InputField
-              name='username'
-              placeholder='username'
-              label='Username'
-            ></InputField>
+            <InputField name='username' label='Username'></InputField>
             <Box mt={4}>
               <InputField
                 name='password'
-                placeholder='password'
                 label='Password'
                 type='password'
               ></InputField>
