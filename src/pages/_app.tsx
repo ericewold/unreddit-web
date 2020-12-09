@@ -1,13 +1,13 @@
-import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react';
-import { Provider, createClient, dedupExchange, fetchExchange } from 'urql';
-import { cacheExchange, Cache, QueryInput } from '@urql/exchange-graphcache';
-import theme from '../theme';
+import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
+import { Provider, createClient, dedupExchange, fetchExchange } from "urql";
+import { cacheExchange, Cache, QueryInput } from "@urql/exchange-graphcache";
+import theme from "../theme";
 import {
   LoginMutation,
   MeDocument,
   MeQuery,
   RegisterMutation
-} from '../generated/graphql';
+} from "../generated/graphql";
 
 function betterUpdateQuery<Result, Query>(
   cache: Cache,
@@ -15,14 +15,14 @@ function betterUpdateQuery<Result, Query>(
   result: any,
   fn: (r: Result, q: Query) => Query
 ) {
-  return cache.updateQuery(qi, data => fn(result, data as any) as any);
+  return cache.updateQuery(qi, (data) => fn(result, data as any) as any);
 }
 
-console.log('createClient @ 4000');
+console.log("createClient @ 4000");
 const client = createClient({
-  url: 'http://localhost:4000/graphql',
+  url: "http://localhost:4000/graphql",
   fetchOptions: {
-    credentials: 'include'
+    credentials: "include"
   },
   exchanges: [
     dedupExchange,
