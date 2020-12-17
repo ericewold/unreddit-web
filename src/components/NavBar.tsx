@@ -18,18 +18,21 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     // user not logged in
   } else if (!data?.me) {
     body = (
-      <>
-        <NextLink href="/login">
-          <Link color="white" fontWeight="bold" mr={4}>
-            login
-          </Link>
-        </NextLink>
-        <NextLink href="/register">
-          <Link color="white" fontWeight="bold">
-            register
-          </Link>
-        </NextLink>
-      </>
+      <div className="nav-wrapper">
+        <div className="left-nav">{`<unreddit>`}</div>
+        <div className="right-nav">
+          <NextLink href="/login">
+            <Link color="white" fontWeight="bold" mr={4}>
+              login
+            </Link>
+          </NextLink>
+          <NextLink href="/register">
+            <Link color="white" fontWeight="bold">
+              register
+            </Link>
+          </NextLink>
+        </div>
+      </div>
     );
     // user is logged in
   } else {
