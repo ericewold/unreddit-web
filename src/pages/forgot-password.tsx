@@ -8,7 +8,6 @@ import { InputField } from "../components/InputField";
 import { Box, Button } from "@chakra-ui/react";
 import { useForgotPasswordMutation } from "../generated/graphql";
 
-
 const ForgotPassword: React.FC<{}> = ({}) => {
   const [complete, setComplete] = useState(false);
   const [, forgotPassword] = useForgotPasswordMutation();
@@ -38,7 +37,8 @@ const ForgotPassword: React.FC<{}> = ({}) => {
                 mt={4}
                 type="submit"
                 isLoading={isSubmitting}
-                colorScheme="teal"
+                color="white"
+                colorScheme="blue"
               >
                 Reset Password
               </Button>

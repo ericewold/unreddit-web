@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 
-
 interface registerProps {}
 
 const Register: React.FC<registerProps> = ({}) => {
@@ -52,7 +51,8 @@ const Register: React.FC<registerProps> = ({}) => {
               mt={4}
               type="submit"
               isLoading={isSubmitting}
-              colorScheme="teal"
+              color="white"
+              colorScheme="blue"
             >
               Register
             </Button>
