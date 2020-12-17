@@ -20,7 +20,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     body = (
       <div className="nav-wrapper">
         <div className="left-nav">{`<unreddit>`}</div>
-        <div className="right-nav">
+        <Flex className="right-nav">
           <NextLink href="/login">
             <Link color="white" fontWeight="bold" mr={4}>
               login
@@ -31,24 +31,29 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
               register
             </Link>
           </NextLink>
-        </div>
+        </Flex>
       </div>
     );
     // user is logged in
   } else {
     body = (
-      <Flex>
-        <Box mr={2}>{data.me.username}</Box>
-        <Button
-          onClick={() => {
-            logout();
-          }}
-          isLoading={logoutFetching}
-          variant="link"
-        >
-          logout
-        </Button>
-      </Flex>
+      <div className="nav-wrapper">
+        <div className="left-nav">{`<unreddit>`}</div>
+        <Flex className="right-nav">
+          <Box mr={2} color="white" fontWeight="bold">
+            {data.me.username}
+          </Box>
+          <Button
+            onClick={() => {
+              logout();
+            }}
+            isLoading={logoutFetching}
+            variant="link"
+          >
+            logout
+          </Button>
+        </Flex>
+      </div>
     );
   }
   return (
