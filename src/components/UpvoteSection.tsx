@@ -18,10 +18,11 @@ export const UpvoteSection: React.FC<UpvoteSectionProps> = ({ post }) => {
             value: 1,
           });
         }}
+        colorScheme={post.voteStatus === 1 ? "green" : "undefined"}
+        className={post.voteStatus === 1 ? "" : "voteBtn"}
         icon={<ChevronUpIcon />}
         aria-label="Upvote"
-        colorScheme="blue"
-        className="voteBtn"
+        //className="voteBtn"
       />
       {post.points}
       <IconButton
@@ -31,10 +32,11 @@ export const UpvoteSection: React.FC<UpvoteSectionProps> = ({ post }) => {
             value: -1,
           });
         }}
+        colorScheme={post.voteStatus === -1 ? "red" : "undefined"}
+        className={post.voteStatus === -1 ? "" : "voteBtn"}
         icon={<ChevronDownIcon />}
         aria-label="Downvote"
-        colorScheme="blue"
-        className="voteBtn"
+        //className="voteBtn"
       />
     </Flex>
   );
