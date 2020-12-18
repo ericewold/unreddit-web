@@ -8,3 +8,9 @@
   color: #fff;
   letter-spacing: 2px;
 }
+.voteBtn {
+  background-color: #eeeeee !important;
+}
+.voteBtn:hover {
+  background-color: #dddddd !important;
+}
