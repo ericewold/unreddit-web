@@ -38,7 +38,12 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
   } else {
     body = (
       <div className="nav-wrapper">
-        <div className="left-nav">{`<unreddit>`}</div>
+        <NextLink href="/">
+          <Link>
+            <div className="left-nav">{`<unreddit>`}</div>
+          </Link>
+        </NextLink>
+
         <Flex className="right-nav">
           <Box mr={2} color="white" fontWeight="bold">
             {data.me.username}
