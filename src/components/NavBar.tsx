@@ -45,7 +45,12 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
         </NextLink>
 
         <Flex className="right-nav">
-          <Box mr={2} color="white" fontWeight="bold">
+          <NextLink href="/create-post">
+            <Link mr={2} color="white" fontWeight="bold">
+              Create Post
+            </Link>
+          </NextLink>
+          <Box mr={2} color="#333" fontWeight="bold">
             {data.me.username}
           </Box>
           <Button
