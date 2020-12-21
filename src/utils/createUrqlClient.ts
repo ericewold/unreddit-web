@@ -13,7 +13,6 @@ import {
   MeDocument,
   MeQuery,
   RegisterMutation,
-  VoteMutation,
   VoteMutationVariables,
 } from "../generated/graphql";
 import { betterUpdateQuery } from "./betterUpdateQuery";
