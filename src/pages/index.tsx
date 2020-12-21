@@ -14,7 +14,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { UpvoteSection } from "../components/UpvoteSection";
 
 const Index = () => {
@@ -54,15 +54,27 @@ const Index = () => {
                     <Text flex={1} mt={4}>
                       {p.textSnippet}
                     </Text>
-                    <IconButton
-                      onClick={() => {
-                        deletePost({ id: p.id });
-                      }}
-                      icon={<DeleteIcon />}
-                      aria-label="Delete post"
-                      colorScheme="red"
-                      color="white"
-                    />
+                    <Box>
+                      <NextLink
+                        href="/post/edit/[id]"
+                        as={`/post/edit/${p.id}`}
+                      >
+                        <IconButton
+                          icon={<EditIcon />}
+                          aria-label="Edit Post"
+                          className="voteBtn"
+                          mr={2}
+                        />
+                      </NextLink>
+                      <IconButton
+                        onClick={() => {
+                          deletePost({ id: p.id });
+                        }}
+                        icon={<DeleteIcon />}
+                        aria-label="Delete Post"
+                        className="voteBtn"
+                      />
+                    </Box>
                   </Flex>
                 </Box>
               </Flex>
