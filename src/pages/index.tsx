@@ -1,6 +1,10 @@
 import { withUrqlClient } from "next-urql";
 import { createUrqlClient } from "../utils/createUrqlClient";
-import { useDeletePostMutation, usePostsQuery } from "../generated/graphql";
+import {
+  useDeletePostMutation,
+  useMeQuery,
+  usePostsQuery,
+} from "../generated/graphql";
 import React, { useState } from "react";
 import { Layout } from "../components/Layout";
 import {
@@ -25,6 +29,7 @@ const Index = () => {
 
   console.log(variables);
 
+  const [{ data: meData }] = useMeQuery();
   const [{ data, fetching }] = usePostsQuery({
     variables,
   });
@@ -54,27 +59,29 @@ const Index = () => {
                     <Text flex={1} mt={4}>
                       {p.textSnippet}
                     </Text>
-                    <Box>
-                      <NextLink
-                        href="/post/edit/[id]"
-                        as={`/post/edit/${p.id}`}
-                      >
+                    {meData?.me?.id !== p.creator.id ? null : (
+                      <Box>
+                        <NextLink
+                          href="/post/edit/[id]"
+                          as={`/post/edit/${p.id}`}
+                        >
+                          <IconButton
+                            icon={<EditIcon />}
+                            aria-label="Edit Post"
+                            className="voteBtn"
+                            mr={2}
+                          />
+                        </NextLink>
                         <IconButton
-                          icon={<EditIcon />}
-                          aria-label="Edit Post"
+                          onClick={() => {
+                            deletePost({ id: p.id });
+                          }}
+                          icon={<DeleteIcon />}
+                          aria-label="Delete Post"
                           className="voteBtn"
-                          mr={2}
                         />
-                      </NextLink>
-                      <IconButton
-                        onClick={() => {
-                          deletePost({ id: p.id });
-                        }}
-                        icon={<DeleteIcon />}
-                        aria-label="Delete Post"
-                        className="voteBtn"
-                      />
-                    </Box>
+                      </Box>
+                    )}
                   </Flex>
                 </Box>
               </Flex>
