@@ -37,7 +37,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     // user is logged in
   } else {
     body = (
-      <Flex className="nav-wrapper" alignItems="center">
+      <Flex className="nav-wrapper">
         <Flex alignItems="center">
           <NextLink href="/">
             <Link>
