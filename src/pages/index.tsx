@@ -26,16 +26,19 @@ const Index = () => {
     cursor: null as null | string,
   });
 
-  console.log(variables);
-
   const [{ data: meData }] = useMeQuery();
-  const [{ data, fetching }] = usePostsQuery({
+  const [{ data, error, fetching }] = usePostsQuery({
     variables,
   });
   const [, deletePost] = useDeletePostMutation();
 
   if (!fetching && !data) {
-    return <div>No posts found.</div>;
+    return (
+      <div>
+        <div>query failed</div>
+        <div>{error?.message}</div>
+      </div>
+    );
   }
   return (
     <Layout>
@@ -60,10 +63,10 @@ const Index = () => {
                     </Text>
                     {meData?.me?.id !== p.creator.id ? null : (
                       <Box>
-                      <EditDeletePostButtons
-                        id={p.id}
-                        creatorId={p.creator.id}
-                      />
+                        <EditDeletePostButtons
+                          id={p.id}
+                          creatorId={p.creator.id}
+                        />
                       </Box>
                     )}
                   </Flex>
