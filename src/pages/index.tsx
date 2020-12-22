@@ -1,25 +1,24 @@
-import { withUrqlClient } from "next-urql";
-import { createUrqlClient } from "../utils/createUrqlClient";
-import {
-  useDeletePostMutation,
-  useMeQuery,
-  usePostsQuery,
-} from "../generated/graphql";
-import React, { useState } from "react";
-import { Layout } from "../components/Layout";
 import {
   Box,
   Button,
   Flex,
   Heading,
-  IconButton,
   Link,
   Stack,
   Text,
 } from "@chakra-ui/react";
+import { withUrqlClient } from "next-urql";
 import NextLink from "next/link";
-import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import React, { useState } from "react";
+import { EditDeletePostButtons } from "../components/EditDeletePostButtons";
+import { Layout } from "../components/Layout";
 import { UpvoteSection } from "../components/UpvoteSection";
+import {
+  useDeletePostMutation,
+  useMeQuery,
+  usePostsQuery,
+} from "../generated/graphql";
+import { createUrqlClient } from "../utils/createUrqlClient";
 
 const Index = () => {
   const [variables, setVariables] = useState({
@@ -61,25 +60,10 @@ const Index = () => {
                     </Text>
                     {meData?.me?.id !== p.creator.id ? null : (
                       <Box>
-                        <NextLink
-                          href="/post/edit/[id]"
-                          as={`/post/edit/${p.id}`}
-                        >
-                          <IconButton
-                            icon={<EditIcon />}
-                            aria-label="Edit Post"
-                            className="voteBtn"
-                            mr={2}
-                          />
-                        </NextLink>
-                        <IconButton
-                          onClick={() => {
-                            deletePost({ id: p.id });
-                          }}
-                          icon={<DeleteIcon />}
-                          aria-label="Delete Post"
-                          className="voteBtn"
-                        />
+                      <EditDeletePostButtons
+                        id={p.id}
+                        creatorId={p.creator.id}
+                      />
                       </Box>
                     )}
                   </Flex>
