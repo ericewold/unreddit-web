@@ -1,12 +1,13 @@
 .nav-wrapper {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: calc(100vw - 50px);
 }
 .left-nav {
   font-weight: 900;
-  font-size: 1.5em;
   color: #333;
+  font-size: 1.5em;
   letter-spacing: 2px;
 }
 .voteBtn {

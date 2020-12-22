@@ -18,8 +18,8 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
     // user not logged in
   } else if (!data?.me) {
     body = (
-      <div className="nav-wrapper">
-        <div className="left-nav">{`<unreddit>`}</div>
+      <Flex className="nav-wrapper">
+        <Flex className="left-nav">{`<unreddit>`}</Flex>
         <Flex className="right-nav">
           <NextLink href="/login">
             <Link color="white" fontWeight="bold" mr={4}>
@@ -32,30 +32,30 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
             </Link>
           </NextLink>
         </Flex>
-      </div>
+      </Flex>
     );
     // user is logged in
   } else {
     body = (
-      <div className="nav-wrapper">
+      <Flex className="nav-wrapper" alignItems="center">
         <Flex alignItems="center">
           <NextLink href="/">
             <Link>
-              <div className="left-nav">{`<unreddit>`}</div>
+              <Flex className="left-nav">{`<unreddit>`}</Flex>
             </Link>
           </NextLink>
         </Flex>
 
-        <Flex className="right-nav" alignItems="center">
+        <Flex className="right-nav" alignItems="center" height="60px">
           <NextLink href="/create-post">
             <Button as={Link} mr={4}>
               Create Post
             </Button>
           </NextLink>
 
-          <Box mr={4} color="#333" fontWeight="bold">
+          <Flex mr={4} color="#333" fontWeight="bold" alignItems="center">
             {data.me.username}
-          </Box>
+          </Flex>
           <Button
             onClick={() => {
               logout();
@@ -66,7 +66,7 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
             logout
           </Button>
         </Flex>
-      </div>
+      </Flex>
     );
   }
   return (
