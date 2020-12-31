@@ -69,5 +69,5 @@ const ChangePassword: NextPage = () => {
     </Wrapper>
   );
 };
-
+// @ts-ignore TODO
 export default withUrqlClient(createUrqlClient)(ChangePassword);
